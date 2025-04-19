@@ -14,33 +14,33 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="nav-brand">
-            <h2>𝕾𝖆𝖚𝖗𝖆𝖇𝖍</h2>
-        </div>
-        <button class="mobile-menu-btn">
-            <i class="fas fa-bars"></i>
-        </button>
-        <div class="nav-menu">
-            <ul>
-                <li><a href="#home" class="active"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
-                <li><a href="#education"><i class="fas fa-graduation-cap"></i> Education</a></li>
-                <li><a href="#skills"><i class="fas fa-code"></i> Skills</a></li>
-                <li><a href="#work"><i class="fas fa-briefcase"></i> Work</a></li>
-                <li><a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a></li>
-                <li><a href="#experience"><i class="fas fa-history"></i> Experience</a></li>
-                <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
-            </ul>
-        </div>
-        <div class="theme-toggle">
-            <i class="fas fa-moon"></i>
-        </div>
-    </nav>
-
     <!-- Main Content -->
-    <main class="main-content">
+    <div class="main-content">
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h2>𝕾𝖆𝖚𝖗𝖆𝖇𝖍</h2>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-menu">
+                <ul>
+                    <li><a href="#home" class="active"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
+                    <li><a href="#education"><i class="fas fa-graduation-cap"></i> Education</a></li>
+                    <li><a href="#skills"><i class="fas fa-code"></i> Skills</a></li>
+                    <li><a href="#work"><i class="fas fa-briefcase"></i> Work</a></li>
+                    <li><a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a></li>
+                    <li><a href="#experience"><i class="fas fa-history"></i> Experience</a></li>
+                    <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </div>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </nav>
+
         <!-- Home Section -->
         <section id="home" class="section home-section">
             <div class="home-container">
@@ -654,8 +654,8 @@
                                 </ul>
                             </div>
                             <div class="project-links">
-                                <a href="#" class="project-link live"><i class="fas fa-globe"></i> Live Demo</a>
-                                <a href="#" class="project-link github"><i class="fab fa-github"></i> Source Code</a>
+                                <a href="https://wanderlust-demo.com" class="project-link live"><i class="fas fa-globe"></i> Live Demo</a>
+                                <a href="https://github.com/yourusername/wanderlust" class="project-link github"><i class="fab fa-github"></i> Source Code</a>
                             </div>
                         </div>
                     </div>
@@ -675,6 +675,7 @@
                                 </div>
                                 <div class="slide fade">
                                     <img src="chat4.png" alt="Chat App Image 4">
+                                </div>
                                 <a class="prev" onclick="changeSlide(this, -1)">❮</a>
                                 <a class="next" onclick="changeSlide(this, 1)">❯</a>
                                 <div class="dots">
@@ -705,8 +706,8 @@
                                 </ul>
                             </div>
                             <div class="project-links">
-                                <a href="#" class="project-link live"><i class="fas fa-globe"></i> Live Demo</a>
-                                <a href="#" class="project-link github"><i class="fab fa-github"></i> Source Code</a>
+                                <a href="https://chat-app-demo.com" class="project-link live"><i class="fas fa-globe"></i> Live Demo</a>
+                                <a href="https://github.com/yourusername/chat-app" class="project-link github"><i class="fab fa-github"></i> Source Code</a>
                             </div>
                         </div>
                     </div>
@@ -716,7 +717,7 @@
                         <div class="project-slideshow">
                             <div class="slideshow-container">
                                 <div class="slide fade">
-                                    <img src="plutono1.png"alt="Saurabh Studio Image 1">
+                                    <img src="plutono1.png" alt="Saurabh Studio Image 1">
                                 </div>
                                 <div class="slide fade">
                                     <img src="plutono2.png" alt="Saurabh Studio Image 2">
@@ -757,8 +758,8 @@
                                 </ul>
                             </div>
                             <div class="project-links">
-                                <a href="#" class="project-link live"><i class="fas fa-globe"></i> Live Demo</a>
-                                <a href="#" class="project-link github"><i class="fab fa-github"></i> Source Code</a>
+                                <a href="https://saurabh-studio-demo.com" class="project-link live"><i class="fas fa-globe"></i> Live Demo</a>
+                                <a href="https://github.com/yourusername/saurabh-studio" class="project-link github"><i class="fab fa-github"></i> Source Code</a>
                             </div>
                         </div>
                     </div>
@@ -941,7 +942,7 @@
                 </div>
             </div>
         </section>
-    </main>
+    </div>
 
     <!-- Footer Section -->
     <footer class="footer">
@@ -988,5 +989,29 @@
     <script src="script.js"></script>
     <script src="dark-mode.js"></script>
     <script src="mobile-menu.js"></script>
+    <script>
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const icon = themeToggle.querySelector('i');
+        
+        // Check for saved theme preference
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        body.setAttribute('data-theme', currentTheme);
+        updateIcon(currentTheme);
+        
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcon(newTheme);
+        });
+        
+        function updateIcon(theme) {
+            icon.className = theme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+        }
+    </script>
 </body>
 </html> 
